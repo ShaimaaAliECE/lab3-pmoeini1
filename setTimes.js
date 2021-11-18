@@ -18,10 +18,34 @@ export default function setTimes(isAdmin, times, name) {
                 }
             }
         )
-        // add all new available times
-        for (t in times) {
+        if (times.length > 0) {
+            // add all new available times
+            for (t in times) {
+                conn.query(
+                    'INSERT INTO AdminTimes VALUES ("' + t + '")',
+                    (err, rows, fields) => {
+                        if (err) {
+                            console.log(err);
+                        }
+                    }
+                )
+            }
+        }
+    } else {
+        // allow guests to list their availability with their name
+        // delete all previous available times
+        conn.query(
+            'DELETE FROM GuestAvailabilities WHERE GuestName=' + name,
+            (err, rows, fields) => {
+                if (err) {
+                    console.log(err);
+                }
+            }
+        )
+        if (times.length > 0) {
+            // add all new times
             conn.query(
-                'INSERT INTO AdminTimes VALUES ("' + t + '")',
+                'INSERT INTO GuestAvailabilities VALUES ("' + name + '", ' + t + '")',
                 (err, rows, fields) => {
                     if (err) {
                         console.log(err);
@@ -29,8 +53,6 @@ export default function setTimes(isAdmin, times, name) {
                 }
             )
         }
-    } else {
-        // allow guests to list their availability with their name
     }
     conn.end();
 };

@@ -39,6 +39,7 @@
         <script>
             $(document).ready(
                 $(document).on('click', '#setTimes', function() {
+                    // find all selected times and pass them to setTimes function
                     let checks = $('input').toArray();
                     let times = [];
                     for (c in checks) {
