@@ -10,7 +10,7 @@ app.get('/admin', (req, res) => {
     res.send(content);
 })
 app.get('/guest', (req, res) => {
-    let content = '<h1>a</h1>';
+    let content = '';
     res.send(content);
 })
 
