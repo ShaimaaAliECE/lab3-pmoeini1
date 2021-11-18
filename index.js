@@ -1,5 +1,5 @@
-const express = require('express');
 import getTimes from './getTimes';
+const express = require('express');
 
 const app = express();
 
@@ -13,8 +13,8 @@ app.get('/guest', (req, res) => {
     res.redirect("guest.html");
 });
 app.get('/previous', (req, res) => {
-    let content = getTimes();
     // attach all previous submissions
+    let content = getTimes();
     res.send(content);
 });
 app.listen(80);
