@@ -5,6 +5,7 @@ let conn = mysql.createConnection({
     user: 'root',
     password: 'password',
     database: 'MyStoreDB',
+    port: 80,
 });
 
 conn.connect();

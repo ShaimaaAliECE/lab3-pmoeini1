@@ -1,4 +1,4 @@
-export default function getTimes() {
+function getTimes() {
     let conn = mysql.createConnection({
         host: '34.72.236.12',
         user: 'root',
@@ -49,3 +49,4 @@ export default function getTimes() {
 
     return adminTimes + guestTimes;
 }
+module.exports = getTimes;

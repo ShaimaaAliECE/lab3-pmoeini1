@@ -1,4 +1,4 @@
-import getTimes from './getTimes';
+const getTimes = require('./getTimes');
 const express = require('express');
 
 const app = express();
